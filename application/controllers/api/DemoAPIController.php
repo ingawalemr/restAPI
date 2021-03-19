@@ -1,0 +1,17 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+//require APPPATH . 'libraries/Format.php';
+require APPPATH . 'libraries/RestController.php';
+use chriskacerguis\RestServer\RestController;
+
+class DemoAPIController extends RestController {
+
+	public function index_get()
+	{
+		echo "welcome_message";
+	}
+
+	
+}
+?>

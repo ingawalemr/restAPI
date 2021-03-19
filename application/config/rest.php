@@ -110,7 +110,7 @@ $config['rest_realm'] = 'REST API';
 |           authorization key
 |
 */
-$config['rest_auth'] = false;
+$config['rest_auth'] = 'basic';
 
 /*
 |--------------------------------------------------------------------------
@@ -126,7 +126,7 @@ $config['rest_auth'] = false;
 | Note: If 'rest_auth' is set to 'session' then change 'auth_source' to the name of the session variable
 |
 */
-$config['auth_source'] = 'ldap';
+$config['auth_source'] = '';
 
 /*
 |--------------------------------------------------------------------------
@@ -298,22 +298,22 @@ $config['rest_database_group'] = 'default';
 | The table name in your database that stores API keys
 |
 */
-$config['rest_keys_table'] = 'keys';
+$config['rest_keys_table'] = 'api_keys';
 
 /*
 |--------------------------------------------------------------------------
 | REST Enable Keys
 |--------------------------------------------------------------------------
 |
-| When set to TRUE, the REST API will look for a column name called 'key'.
+| When set to TRUE, the REST API will look for a column name called 'my_key'.
 | If no key is provided, the request will result in an error. To override the
 | column name see 'rest_key_column'
 |
 | Default table schema:
-|   CREATE TABLE `keys` (
+|   CREATE TABLE `api_keys` (
 |       `id` INT(11) NOT NULL AUTO_INCREMENT,
 |       `user_id` INT(11) NOT NULL,
-|       `key` VARCHAR(40) NOT NULL,
+|       `my_key` VARCHAR(40) NOT NULL,
 |       `level` INT(2) NOT NULL,
 |       `ignore_limits` TINYINT(1) NOT NULL DEFAULT '0',
 |       `is_private_key` TINYINT(1)  NOT NULL DEFAULT '0',
@@ -323,7 +323,7 @@ $config['rest_keys_table'] = 'keys';
 |   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 |
 */
-$config['rest_enable_keys'] = false;
+$config['rest_enable_keys'] = TRUE;
 
 /*
 |--------------------------------------------------------------------------
@@ -334,7 +334,7 @@ $config['rest_enable_keys'] = false;
 | column name to match e.g. my_key
 |
 */
-$config['rest_key_column'] = 'key';
+$config['rest_key_column'] = 'my_key';
 
 /*
 |--------------------------------------------------------------------------

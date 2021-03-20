@@ -53,4 +53,10 @@ $route['default_controller'] = 'DemoAPIController';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-$route['api/demo'] = 'api/DemoAPIController/index';
+$route['api/demo'] = 'api/DemoAPIController/index';	//simple demo api show
+
+$route['api/employee'] = 'api/EmployeeAPIController/index';	//DB Api test-fetch
+$route['api/employee/create'] = 'api/EmployeeAPIController/create';//DB Api test-insert
+$route['api/employee/edit/(:any)'] = 'api/EmployeeAPIController/editEmployee/$1';
+$route['api/employee/update/(:any)'] = 'api/EmployeeAPIController/updateEmployee/$1';
+//DB Api test-fetch record as per id

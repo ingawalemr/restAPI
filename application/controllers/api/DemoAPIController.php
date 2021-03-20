@@ -10,6 +10,7 @@ class DemoAPIController extends RestController {
 	public function index_get()
 	{
 		echo "welcome message with Restful api";
+		echo "<h2>"."hello"."</h2>";
 	}
 
 	

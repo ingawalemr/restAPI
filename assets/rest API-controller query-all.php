@@ -1,0 +1,39 @@
+<?php 
+public function index_get()	//fetch data
+{
+	$data = $this->EmployeeModel->getEmployee();
+	$this->response($data, 200);
+}
+
+public function create_post()	//insert data
+{
+	$formData =[ 
+					'first_name' => $this->input->post('first_name'), 
+  				    'last_name' => $this->input->post('last_name'),
+  				    'phone' => $this->input->post('phone'),
+  				    'email' => $this->input->post('email'),
+				   ];	
+	$result = $this->EmployeeModel->createEmployee($formData);
+}
+
+public function editEmployee_get($id)	// fetch data as per id
+{
+	$editdata = $this->EmployeeModel->editEmployee($id);
+	$this->response($editdata, 200);
+}
+
+public function updateEmployee_put($id)	// upd ate data
+{
+	$formData =[ 
+					'first_name' => $this->put('first_name'), 
+  				    'last_name' => $this->put('last_name'),
+  				    'phone' => $this->put('phone'),
+  				    'email' => $this->put('email'),
+				   ];	
+	$updatedata = $this->EmployeeModel->updateEmployee($id, $formData);
+}
+
+public function deleteEmployee_delete($id)	// delete data 
+{
+	$deletedata = $this->EmployeeModel->deleteEmployee($id);
+}

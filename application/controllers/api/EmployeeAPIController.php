@@ -12,13 +12,13 @@ class EmployeeAPIController extends RestController {
 		$this->load->model('EmployeeModel');
 	}
 
-	public function index_get()
+	public function index_get()	//fetch data
 	{
 		$data = $this->EmployeeModel->getEmployee();
 		$this->response($data, 200);
 	}
 
-	public function create_post()
+	public function create_post()	//insert data
 	{
 		/*	$formData =[ 'first_name' => $this->input->post('first_name'), ];
 			$this->response($formData, 200);		*/
@@ -46,13 +46,13 @@ class EmployeeAPIController extends RestController {
 		}
 	}
 
-	public function editEmployee_get($id)
+	public function editEmployee_get($id)	// fetch data as per id
 	{
 		$editdata = $this->EmployeeModel->editEmployee($id);
 		$this->response($editdata, 200);
 	}
 	
-	public function updateEmployee_put($id)
+	public function updateEmployee_put($id)		// update data
 	{
 		$formData =[ 
 					'first_name' => $this->put('first_name'), 
@@ -61,6 +61,7 @@ class EmployeeAPIController extends RestController {
   				    'email' => $this->put('email'),
 				   ];	
 		$updatedata = $this->EmployeeModel->updateEmployee($id, $formData);
+		
 		if($updatedata > 0) {
 			$this->response([ 
                 'status' => true,
@@ -76,5 +77,23 @@ class EmployeeAPIController extends RestController {
 		}
 	}
 	
+	public function deleteEmployee_delete($id)		// delete data 
+	{
+		$deletedata = $this->EmployeeModel->deleteEmployee($id);
+
+		if($deletedata > 0) {
+			$this->response([ 
+                'status' => true,
+                'message' => 'Record deleted successfully'
+            	], RestController::HTTP_OK);
+		}
+		else
+		{
+			$this->response([
+                'status' => false,
+                'message' => 'Failed to delete Record'
+            	], RestController::HTTP_BAD_REQUEST);
+		}
+	}
 }
 ?>

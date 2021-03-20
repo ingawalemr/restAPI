@@ -59,4 +59,4 @@ $route['api/employee'] = 'api/EmployeeAPIController/index';	//DB Api test-fetch
 $route['api/employee/create'] = 'api/EmployeeAPIController/create';//DB Api test-insert
 $route['api/employee/edit/(:any)'] = 'api/EmployeeAPIController/editEmployee/$1';
 $route['api/employee/update/(:any)'] = 'api/EmployeeAPIController/updateEmployee/$1';
-//DB Api test-fetch record as per id
+$route['api/employee/delete/(:any)'] = 'api/EmployeeAPIController/deleteEmployee/$1';

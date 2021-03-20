@@ -1,0 +1,82 @@
+............controller
+
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+require APPPATH . 'libraries/RestController.php';
+use chriskacerguis\RestServer\RestController;
+
+class EmployeeAPIController extends RestController {
+
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->model('EmployeeModel');
+	}
+
+	public function updateEmployee_put($id)
+	{
+		$formData =[ 
+					'first_name' => $this->put('first_name'), 
+  				    'last_name' => $this->put('last_name'),
+  				    'phone' => $this->put('phone'),
+  				    'email' => $this->put('email'),
+				   ];	
+		$updatedata = $this->EmployeeModel->updateEmployee($id, $formData);
+		if($updatedata > 0) {
+			$this->response([ 
+                'status' => true,
+                'message' => 'Record updated successfully'
+            	], RestController::HTTP_OK);
+		}
+		else
+		{
+			$this->response([
+                'status' => false,
+                'message' => 'Failed to update Record'
+            	], RestController::HTTP_BAD_REQUEST);
+		}
+	}
+	
+}
+?>
+
+..................model
+
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class EmployeeModel extends CI_Model {
+
+	public function updateEmployee($id, $formData)
+	{
+		$this->db->where('id', $id);
+		return $this->db->update('employee', $formData);
+	}
+}
+?>
+
+................route
+
+$route['api/employee/update/(:any)'] = 'api/EmployeeAPIController/updateEmployee/$1';
+//DB Api test-fetch record as per id
+
+................Postman URL
+PUT
+http://localhost/restAPI/api/employee/update/6
+
+..............Body-( raw , JSON Format) in POSTMAN
+first_name : siddhesh ingawale
+
+....................output
+{
+    "first_name": "mahadev",
+    "last_name": "ingawale",
+    "phone": "9898767676",
+    "email": "ingawalemr@gmail.com"
+} //no id required here, it has taken in url
+
+{
+    "status": true,
+    "message": "Record updated successfully"
+}

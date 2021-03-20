@@ -36,3 +36,51 @@ $route['api/employee/create'] = 'api/EmployeeAPIController/create';//DB Api test
 	}
 
 ..................................................................................................
+
+$route['api/employee/edit/(:any)'] = 'api/EmployeeAPIController/editEmployee/$1';
+
+	public function editEmployee($id)	//model
+	{
+		$this->db->where('id', $id);
+		$query = $this->db->get('employee')->row_array();
+		return $query;
+	}
+
+	public function editEmployee_get($id) // Controller
+	{
+		$editdata = $this->EmployeeModel->editEmployee($id);
+		$this->response($editdata, 200);
+	}
+..................................................................................................
+$route['api/employee/update/(:any)'] = 'api/EmployeeAPIController/updateEmployee/$1';
+
+	public function updateEmployee_put($id)	 // Controller
+	{
+		$formData =[ 
+					'first_name' => $this->put('first_name'), 
+  				    'last_name' => $this->put('last_name'),
+  				    'phone' => $this->put('phone'),
+  				    'email' => $this->put('email'),
+				   ];	
+		$updatedata = $this->EmployeeModel->updateEmployee($id, $formData);
+	}
+	
+	public function updateEmployee($id, $formData)	//model
+	{
+		$this->db->where('id', $id);
+		return $this->db->update('employee', $formData);
+	}
+
+..................................................................................................
+
+$route['api/employee/delete/(:any)'] = 'api/EmployeeAPIController/deleteEmployee/$1';
+
+	public function deleteEmployee_delete($id)	 // Controller
+	{
+		$deletedata = $this->EmployeeModel->deleteEmployee($id);
+	}
+	
+	public function deleteEmployee($id)	//model
+	{
+		return $this->db->delete('employee', ['id' => $id]);
+	}

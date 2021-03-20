@@ -1,0 +1,68 @@
+............controller
+
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+require APPPATH . 'libraries/RestController.php';
+use chriskacerguis\RestServer\RestController;
+
+class EmployeeAPIController extends RestController {
+
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->model('EmployeeModel');
+	}
+
+	public function deleteEmployee_delete($id)
+	{
+		$deletedata = $this->EmployeeModel->deleteEmployee($id);
+
+		if($deletedata > 0) {
+			$this->response([ 
+                'status' => true,
+                'message' => 'Record deleted successfully'
+            	], RestController::HTTP_OK);
+		}
+		else
+		{
+			$this->response([
+                'status' => false,
+                'message' => 'Failed to delete Record'
+            	], RestController::HTTP_BAD_REQUEST);
+		}
+	}
+	
+}
+?>
+
+..................model
+
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class EmployeeModel extends CI_Model {
+
+	public function deleteEmployee($id)
+	{
+		$this->db->where('id', $id);
+		return $this->db->delete('employee');
+		//or  return $this->db->delete('employee', ['id' => $id]);
+	}
+}
+?>
+
+................route
+
+$route['api/employee/delete/(:any)'] = 'api/EmployeeAPIController/deleteEmployee/$1';
+
+................Postman URL
+DELETE
+http://localhost/restAPI/api/employee/delete/5
+
+..............in POSTMAN - no chages required for delete
+
+{
+    "status": true,
+    "message": "Record deleted successfully"
+}

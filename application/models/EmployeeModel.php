@@ -21,5 +21,10 @@ class EmployeeModel extends CI_Model {
 		return $query;
 	}
 
+	public function updateEmployee($id, $formData)
+	{
+		$this->db->where('id', $id);
+		return $this->db->update('employee', $formData);
+	}
 }
 ?>

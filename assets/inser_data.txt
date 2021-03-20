@@ -1,0 +1,45 @@
+............controller
+
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+require APPPATH . 'libraries/RestController.php';
+use chriskacerguis\RestServer\RestController;
+
+class EmployeeAPIController extends RestController {
+
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->model('EmployeeModel');
+	}
+
+	public function create_post()
+	{
+		$formData =[ 'first_name' => $this->input->post('first_name'), ];
+		$this->response($formData, 200);
+		
+	}
+	
+}
+?>
+
+..................model
+
+
+................route
+
+$route['api/employee/create'] = 'api/EmployeeAPIController/create';//DB Api test-insert
+
+................Postman URL
+POST
+http://localhost/restAPI/api/employee/create
+
+..............Body-(form-data) in POSTMAN
+first_name : siddhesh ingawale
+
+....................output
+
+{
+    "first_name": "siddhesh ingawale"
+}

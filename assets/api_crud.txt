@@ -1,0 +1,38 @@
+http://localhost/restAPI/api/employee
+$route['api/employee'] = 'api/EmployeeAPIController/index';	//DB Api test-fetch
+
+	public function getEmployee()	//model
+	{
+		$result = $this->db->get('employee')->result_array();
+		return $result;
+	}
+	
+	public function index_get()	// Controller
+	{
+		$data = $this->EmployeeModel->getEmployee();
+		$this->response($data, 200);
+	}
+..................................................................................................
+http://localhost/restAPI/api/employee/create
+$route['api/employee/create'] = 'api/EmployeeAPIController/create';//DB Api test-insert
+
+	public function createEmployee($formData)	//model
+	{
+		$this->db->insert('employee', $formData);
+	}
+
+	public function create_post()
+	{
+		/*	$formData =[ 'first_name' => $this->input->post('first_name'), ];
+			$this->response($formData, 200);		*/
+
+		$formData =[ 
+					'first_name' => $this->input->post('first_name'), 
+  				    'last_name' => $this->input->post('last_name'),
+  				    'phone' => $this->input->post('phone'),
+  				    'email' => $this->input->post('email'),
+				   ];	
+		$result = $this->EmployeeModel->createEmployee($formData);
+	}
+
+..................................................................................................

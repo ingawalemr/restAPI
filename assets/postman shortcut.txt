@@ -1,0 +1,102 @@
+Shortcuts
+Tabs
+Open New Tab
+Ctrl + T
+Close Tab
+Ctrl + W
+Force Close Tab
+Ctrl + Alt + W
+Switch To Next Tab
+Ctrl + Tab
+Switch To Previous Tab
+Ctrl + Shift + Tab
+Switch To Tab at Position
+Ctrl + 1 through Ctrl + 8
+Switch To Last Tab
+Ctrl + 9
+Reopen Last Closed Tab
+Ctrl + Shift + t
+New Runner Tab
+Ctrl + Shift + R
+Request
+Request URL
+Ctrl + L
+Save Request
+Ctrl + S
+Save Request As
+Ctrl + Shift + S
+Send Request
+Ctrl + Enter
+Send And Download Request
+Ctrl + Alt + Enter
+Resize Request or Response Pane
+Alt + scroll
+Win + Alt + scroll
+Scroll To Request
+Ctrl + Alt + ?
+Scroll To Response
+Ctrl + Alt + ?
+Sidebar
+Search Sidebar
+Ctrl + F
+Toggle Sidebar
+Ctrl + \
+Next Item
+?
+Previous Item
+?
+Expand Item
+?
+Collapse Item
+?
+Select Item
+Enter
+Open Request In A New Tab
+Ctrl + Shift + click
+Rename Item
+Ctrl + E
+Group Items
+Ctrl + G
+Cut Item
+Ctrl + X
+Copy Item
+Ctrl + C
+Paste Item
+Ctrl + V
+Duplicate Item
+Ctrl + D
+Delete Item
+Del
+Interface
+Zoom In
+Ctrl + +
+Zoom Out
+Ctrl + -
+Reset Zoom
+Ctrl + 0
+Toggle Two-Pane View
+Ctrl + Alt + V
+Windows and modals
+New...
+Ctrl + N
+New Postman Window
+Ctrl + Shift + N
+New Console Window
+Ctrl + Alt + C
+Find
+Ctrl + Shift + F
+Import
+Ctrl + O
+Settings
+Ctrl + ,
+Submit Modal
+Ctrl + ?
+Open Shortcut Help
+Ctrl + /
+Search
+Ctrl + K
+CONSOLE
+Clear Console
+Ctrl + Shift + K
+Search Console
+Ctrl + F

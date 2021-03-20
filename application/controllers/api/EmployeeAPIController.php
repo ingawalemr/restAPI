@@ -52,5 +52,29 @@ class EmployeeAPIController extends RestController {
 		$this->response($editdata, 200);
 	}
 	
+	public function updateEmployee_put($id)
+	{
+		$formData =[ 
+					'first_name' => $this->put('first_name'), 
+  				    'last_name' => $this->put('last_name'),
+  				    'phone' => $this->put('phone'),
+  				    'email' => $this->put('email'),
+				   ];	
+		$updatedata = $this->EmployeeModel->updateEmployee($id, $formData);
+		if($updatedata > 0) {
+			$this->response([ 
+                'status' => true,
+                'message' => 'Record updated successfully'
+            	], RestController::HTTP_OK);
+		}
+		else
+		{
+			$this->response([
+                'status' => false,
+                'message' => 'Failed to update Record'
+            	], RestController::HTTP_BAD_REQUEST);
+		}
+	}
+	
 }
 ?>

@@ -22,7 +22,7 @@ public function editEmployee_get($id)	// fetch data as per id
 	$this->response($editdata, 200);
 }
 
-public function updateEmployee_put($id)	// upd ate data
+public function updateEmployee_put($id)	// update data
 {
 	$formData =[ 
 					'first_name' => $this->put('first_name'), 
